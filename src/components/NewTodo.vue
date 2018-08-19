@@ -45,7 +45,12 @@ export default {
   },
   methods: {
     handleCreateTask() {
-      console.log("data", this.titleText);
+      const title = this.titleText;
+      const description = this.descriptionText;
+      this.$emit("new-todo", {
+        title,
+        description
+      });
     },
     handleCancelCreate() {
       this.isCreating = false;

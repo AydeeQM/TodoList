@@ -8,7 +8,12 @@
 import Todo from "./Todo";
 
 export default {
-  props: ["todos"],
+  props: {
+    todos: {
+      type: Array,
+      required: true
+    }
+  },
   components: {
     Todo
   }

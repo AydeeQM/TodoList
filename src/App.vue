@@ -3,7 +3,7 @@
     <h1>{{ msg }}</h1>
     <section>
       <todo-list v-bind:todos="todos"></todo-list>
-      <new-todo></new-todo>
+      <new-todo @new-todo="addNewTodo"></new-todo>
     </section>
   </div>
 </template>
@@ -11,6 +11,7 @@
 <script>
 import NewTodo from "./components/NewTodo";
 import TodoList from "./components/TodoList";
+
 export default {
   name: "app",
   components: {
@@ -23,19 +24,19 @@ export default {
       newTodoText: {},
       todos: [
         {
-          titleText: "Project 1",
-          descriptionText: "description 1"
+          title: "Project 1",
+          description: "description 1"
         },
         {
-          titleText: "Project 2",
-          descriptionText: "description 2"
+          title: "Project 2",
+          description: "description 2"
         }
       ]
     };
   },
   methods: {
-    addNewTodo() {
-      this.todos.push(this.newTodoText);
+    addNewTodo(newTodo) {
+      this.todos.push(newTodo);
       this.newTodoText = {};
     }
   }
