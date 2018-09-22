@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <h1>{{ msg }}</h1>
+  <div id="home">
+    <h3>{{ msg }}</h3>
     <section>
       <todo-list v-bind:todos="todos"></todo-list>
       <new-todo @new-todo="addNewTodo"></new-todo>
@@ -9,27 +9,27 @@
 </template>
 
 <script>
-import NewTodo from "./components/NewTodo";
-import TodoList from "./components/TodoList";
+import NewTodo from "../components/NewTodo";
+import TodoList from "../components/TodoList";
 
 export default {
-  name: "app",
+  name: "home",
   components: {
     TodoList,
     NewTodo
   },
   data() {
     return {
-      msg: "PEDIDOS",
+      msg: "REGISTRAR INVITACIONES",
       newTodoText: {},
       todos: [
         {
-          title: "Project 1",
-          description: "description 1"
+          name: "Juan Perez",
+          date: "12/08/2018"
         },
         {
-          title: "Project 2",
-          description: "description 2"
+          name: "Alonso Sanchez",
+          date: "12/09/2018"
         }
       ]
     };
@@ -44,7 +44,7 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
+#home {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -10,7 +10,7 @@
         <b-form-input
           id="exampleInput1"
           type="text"
-          v-model="titleText"
+          v-model="nameText"
         >
         </b-form-input>
       </b-form-group>
@@ -22,7 +22,7 @@
         <b-form-input 
           id="exampleInput2"
           type="text"
-          v-model="descriptionText"
+          v-model="dateText"
         >
         </b-form-input>
       </b-form-group> 
@@ -38,18 +38,18 @@
 export default {
   data() {
     return {
-      titleText: "",
-      descriptionText: "",
+      nameText: "",
+      dateText: "",
       isCreating: false
     };
   },
   methods: {
     handleCreateTask() {
-      const title = this.titleText;
-      const description = this.descriptionText;
+      const name = this.nameText;
+      const date = this.dateText;
       this.$emit("new-todo", {
-        title,
-        description
+        name,
+        date
       });
     },
     handleCancelCreate() {

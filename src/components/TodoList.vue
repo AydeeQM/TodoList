@@ -1,7 +1,7 @@
 <template>
-  <ul>
-    <li is="todo" v-for="(todo, index) in todos" :todo.sync="todo" :key="index" ></li>
-  </ul>
+  <div class="d-flex ml-4 mr-4">
+    <div is="todo" v-for="(todo, index) in todos" :todo.sync="todo" :key="index" ></div>
+  </div>
 </template>
 
 <script>
