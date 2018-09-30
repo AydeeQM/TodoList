@@ -1,10 +1,10 @@
 <template>
-  <div class="w-25 border rounded pl-3 pr-3 pt-3 pb-3">
+  <div class="container-new-todo border rounded pl-3 pr-3 pt-3 pb-3">
     <button v-on:click="handleShowCreate" v-show="!isCreating">+</button>
     <b-form v-show="isCreating" autocomplete="off">
       <b-form-group 
         id="enterTitle"
-        label="Titulo"
+        label="Nombre"
         label-for="exampleInput1"
       >
         <b-form-input
@@ -16,15 +16,18 @@
       </b-form-group>
       <b-form-group 
         id="enterDescription"
-        label="Description"
+        label="Fecha"
         label-for="exampleInput2"
       >
-        <b-form-input 
-          id="exampleInput2"
-          type="text"
+        <date-picker
           v-model="dateText"
-        >
-        </b-form-input>
+          :first-day-of-week="1"
+          placeholder="Ingresa fecha"
+          lang="es"
+          format="DD/MM/YYYY"
+          :editable="false"
+          :not-before="new Date()">
+        </date-picker>
       </b-form-group> 
       <div class="d-flex justify-content-between">
         <b-button variant="outline-success" class="w-50" v-on:click="handleCreateTask()">Create</b-button>
@@ -35,7 +38,11 @@
 </template>
 
 <script>
+import DatePicker from "vue2-datepicker";
+import moment from "moment";
+
 export default {
+  components: { DatePicker },
   data() {
     return {
       nameText: "",
@@ -46,7 +53,7 @@ export default {
   methods: {
     handleCreateTask() {
       const name = this.nameText;
-      const date = this.dateText;
+      const date = moment(this.dateText).format("DD/MM/YYYY");
       this.$emit("new-todo", {
         name,
         date
@@ -61,3 +68,10 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.container-new-todo {
+  align-self: center;
+  justify-self: center;
+}
+</style>
+

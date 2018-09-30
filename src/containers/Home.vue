@@ -1,9 +1,11 @@
 <template>
   <div id="home">
-    <h3>{{ msg }}</h3>
+    <h3 class="mb-4">{{ msg }}</h3>
     <section>
-      <todo-list v-bind:todos="todos"></todo-list>
-      <new-todo @new-todo="addNewTodo"></new-todo>
+      <div class="d-flex">
+        <todo-list v-bind:todos="todos"></todo-list>
+        <new-todo @new-todo="addNewTodo"></new-todo>
+      </div>
     </section>
   </div>
 </template>
@@ -25,11 +27,13 @@ export default {
       todos: [
         {
           name: "Juan Perez",
-          date: "12/08/2018"
+          date: "12/08/2018",
+          done: false
         },
         {
           name: "Alonso Sanchez",
-          date: "12/09/2018"
+          date: "12/09/2018",
+          done: false
         }
       ]
     };
